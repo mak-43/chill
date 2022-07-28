@@ -20,14 +20,14 @@ const Navbar = ({ children }) => {
                                 {/* <!-- Navbar menu content here --> */}
 
                                 <li><NavLink className='rounded'  to='/'>Home</NavLink></li>
-                                <li><NavLink className='rounded'  to='/dashboard'>Dashboard</NavLink></li>
-                                <li><NavLink className='rounded'  to='/signin'>Sign In</NavLink></li>
+                                <li><NavLink className='rounded'  to='/dashboard/addvideo'>Dashboard</NavLink></li>
+                                <li><NavLink className='rounded'  to='/signin'>Login</NavLink></li>
 
                             </ul>
                         </div>
                     </div>
-                    {/* <!-- Page content here --> */}
-                    {children}
+                    {/* <!-- Page content here --> */} 
+                    {children} 
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer-3" class="drawer-overlay"></label>
@@ -39,8 +39,8 @@ const Navbar = ({ children }) => {
                             <label for="my-drawer-3" class="btn btn-sm btn-circle  ">✕</label>
                         </div>
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-                        <li><NavLink to='/signin'>Sign In</NavLink></li>
+                        <li><NavLink to='/dashboard/addvideo'>Dashboard</NavLink></li>
+                        <li><NavLink to='/signin'>Login</NavLink></li>
 
                     </ul>
 
