@@ -70,8 +70,8 @@ const SignIn = () => {
     }
 
     return (
-        <div>
-            <div className='flex justify-center bg-accent items-center h-screen'>
+        <div className='flex flex-col justify-center bg-accent items-center h-screen '>
+           
 
 
                 <div class="rounded-xl flex-shrink-0 w-full max-w-sm  bg-secondary border border-primary ">
@@ -121,7 +121,7 @@ const SignIn = () => {
                                 <input
                                     type={!hide?'password':'text'}
                                     placeholder="Enter password"
-                                    className="bg-secondary px-2 text-white"
+                                    className="bg-secondary px-2 py-2 text-white"
                                     {...register("password", {
                                         required: {
                                             value: true,
@@ -145,13 +145,14 @@ const SignIn = () => {
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
 
-                            <hr className='bg-secondary mb-5' />
+                            <hr className='bg-secondary ' />
 
                             {signInError}
+                            <p className='text-white my-2'><small>Forgot password?</small></p>
 
-                            <input className='py-3 rounded btn-primary w-full max-w-xs  text-black font-bold uppercase' type="submit" value="Sign In" />
+                            <input className='py-3 mt-5 rounded btn-primary w-full max-w-xs  text-black font-bold uppercase cursor-pointer' type="submit" value="Sign In" />
                         </form>
-                         <Link to='/signup' className=' text-center py-3 rounded btn-secondary w-full max-w-xs  text-primary border border-primary font-bold uppercase'>Sign Up</Link> 
+                         <Link to='/signup' className=' text-center py-3 mt-3 rounded    text-primary border border-primary font-bold uppercase'>Sign Up</Link> 
                         {/* <p>Forget Password ? <Link to='' 
                          onClick= {resetPassword}
                         className='text-cyan-400'><small>Reset Password</small></Link> </p> */}
@@ -164,7 +165,7 @@ const SignIn = () => {
                     </div>
                 </div>
             </div>
-        </div>
+     
 
     );
 };

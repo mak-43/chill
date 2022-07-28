@@ -1,12 +1,12 @@
 import React, { Children } from 'react';
 import { NavLink } from "react-router-dom"
 
-const Navbar = ({children}) => {
+const Navbar = ({ children }) => {
     return (
         <div>
             <div class="drawer">
                 <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content flex flex-col">
+                <div class="drawer-content  flex flex-col">
                     {/* <!-- Navbar --> */}
                     <div class="w-full navbar bg-base-300">
                         <div class="flex-none lg:hidden">
@@ -19,21 +19,22 @@ const Navbar = ({children}) => {
                             <ul class="menu menu-horizontal">
                                 {/* <!-- Navbar menu content here --> */}
 
-                                <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-                                <li><NavLink to='/analytic'>Analytic</NavLink></li>
+                                <li><NavLink className='rounded'  to='/'>Home</NavLink></li>
+                                <li><NavLink className='rounded'  to='/dashboard'>Dashboard</NavLink></li>
+                                <li><NavLink className='rounded'  to='/signin'>Sign In</NavLink></li>
 
                             </ul>
                         </div>
                     </div>
                     {/* <!-- Page content here --> */}
-                   {children}
+                    {children}
                 </div>
                 <div class="drawer-side">
                     <label for="my-drawer-3" class="drawer-overlay"></label>
                     <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
                         {/* <!-- Sidebar content here --> */}
                         <div className='flex justify-around items-center my-5'>
-                       
+
                             <p className='text-violet-600 font-bold text-primary'>CHILL</p>
                             <label for="my-drawer-3" class="btn btn-sm btn-circle  ">✕</label>
                         </div>
