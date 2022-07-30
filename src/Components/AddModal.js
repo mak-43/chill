@@ -1,12 +1,19 @@
 import React from 'react';
-
-const AddModal = ({setAdd}) => {
+import { useForm } from "react-hook-form";
+const AddModal = ({ setAdd }) => {
     console.log('okkkkkkk')
-      
+
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {console.log(data);
+        setAdd(null)
+    }
+
+
+
     return (
         <div>
 
-     
+
 
 
             <input type="checkbox" id="addmodal" class="modal-toggle" />
@@ -14,27 +21,31 @@ const AddModal = ({setAdd}) => {
                 <div class="modal-box">
                     <h3 class="font-bold text-lg">Google AD</h3>
                     <p class="py-2">Banner Admod ID </p>
-                    <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    <p class="py-2">Interesticial Admob ID</p>
-                    <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
-                    <div className='border-2 p-5 rounded-xl my-3'>
-                        <p class="py-2">Interesticial Admob Click</p>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs my-2" />
-                    </div>
-                    <p class="py-2">Interesticial Admob ID</p>
-                    <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <input type="text" placeholder="" class="input input-bordered w-full" {...register("bannerid")}/>
 
-                    <div className='border-2 px-5 py-2 rounded-xl my-3'>
-                        <p class="py-2">Native AD Per Video(You may also like)</p>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs my-2" />
-                        <p class="py-2">Native AD Per Video(For Series)</p>
-                        <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs my-2" />
-                    </div>
+                        <p class="py-2">Interesticial Admob ID</p>
+                        <input type="text" placeholder="" class="input input-bordered w-full " {...register("admobid")} />
+                        <div className='border-2 p-5 rounded-xl my-3'>
+                            <p class="py-2">Interesticial Admob Click</p>
+                            <input type="number" placeholder="02" class="input input-bordered w-full max-w-xs my-2"{...register("admobclick")}/>
+                        </div>
+                        <p class="py-2">Interesticial Admob ID</p>
+                        <input type="text" placeholder="" class="input input-bordered w-full " {...register("iadmobid")}/>
 
-                    <div class="modal-action">
-                        <label for="addmodal" class="btn">Add</label>
-                        <label for="addmodal" class="btn">cancel</label>
-                    </div>
+                        <div className='border-2 px-5 py-2 rounded-xl my-3'>
+                            <p class="py-2">Native AD Per Video(You may also like)</p>
+                            <input type="number" placeholder="02" class="input input-bordered w-full max-w-xs my-2" {...register("nativeadd")}/>
+                            <p class="py-2">Native AD Per Video(For Series)</p>
+                            <input type="number" placeholder="03" class="input input-bordered w-full max-w-xs my-2"{...register("nativeper")} />
+                        </div>
+
+                        <div class="modal-action">
+                         
+                            <input type="submit" value='ADD' className='btn btn-primary text-white' />
+                            <label for="addmodal" class="btn bg-red-600">cancel</label>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

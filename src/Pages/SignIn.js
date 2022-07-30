@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import Loading from '../Components/Loading';
 import { toast } from 'react-toastify';
 import auth from '../firebase.init';
-import useToken from '../Hooks/useToken';
+
 import './Sign.css'
 const SignIn = () => {
     const [hide,setHide]=useState(false)
@@ -31,18 +31,18 @@ const SignIn = () => {
 
     };
 
-    const [token] = useToken(user || guser || nuser || fuser)
+
     const navigate = useNavigate()
     const location = useLocation()
     let signInError;
 
     let from = location.state?.from?.pathname || '/'
-    useEffect(() => {
-        if (token) {
-            console.log(user)
+  
+        if (user || guser || nuser || fuser) {
+            console.log(guser)
             navigate(from, { replace: true })
         }
-    }, [token, from, navigate])
+
     if (gloading || loading || nloading || floading) {
         return <Loading></Loading>
     }

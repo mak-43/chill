@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 
-import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import Loading from '../Components/Loading';
 import { toast } from 'react-toastify';
 import auth from '../firebase.init';
-import useToken from '../Hooks/useToken';
+
 import './Sign.css'
 const SignUp = () => {
     const [hide, setHide] = useState(false)
@@ -16,11 +16,11 @@ const SignUp = () => {
     const [signInWithFacebook, fuser, floading, ferror] = useSignInWithFacebook(auth);
     const [nuser, nloading, nerror] = useAuthState(auth);
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
     const [sendPasswordResetEmail, sending, perror] = useSendPasswordResetEmail(
         auth
     );
@@ -33,7 +33,7 @@ const SignUp = () => {
         if (data.password === data.cpassword) {
             console.log(data)
             setEmail(data.email)
-            signInWithEmailAndPassword(data.email, data.password)
+            createUserWithEmailAndPassword(data.email, data.password)
         }
         else {
 
@@ -44,22 +44,21 @@ const SignUp = () => {
     };
 
 
-    const [token] = useToken(user || guser || nuser || fuser)
     const navigate = useNavigate()
     const location = useLocation()
     let signInError;
 
     let from = location.state?.from?.pathname || '/'
-    useEffect(() => {
-        if (token) {
-            console.log(user)
-            navigate(from, { replace: true })
-        }
-    }, [token, from, navigate])
+    
+       
+    
     if (gloading || loading || nloading || floading) {
         return <Loading></Loading>
     }
-
+    if (user || guser || nuser || fuser) {
+        console.log(user)
+        navigate(from, { replace: true })
+    }
 
 
 
