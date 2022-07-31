@@ -7,7 +7,8 @@ import { Routes, Route } from 'react-router-dom'
 import Video from "./Pages/Video";
 import Add from "./Pages/Add";
 import PrivateRoute from "./Components/PrivateRoute";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
+        <ToastContainer />
       </Navbar>
 
 

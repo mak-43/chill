@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {NavLink,Outlet} from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Dashboard = () => {
@@ -12,10 +13,10 @@ const Dashboard = () => {
                 
                
 
-                    <NavLink  className='flex  items-center gap-3 px-2 ' to='addvideo'><i class="fa-solid fa-video-slash"></i> <p>ADD Video</p> </NavLink>
+                    <NavLink  className='flex  items-center gap-3 px-2 hover:text-red-600 font-semibold ' to='addvideo'><i class="fa-solid fa-video-slash  font-semibold"></i> <p>ADD Video</p> </NavLink>
                    
 
-                    <NavLink className='flex items-center gap-3 px-2' to='add'><i class="fa-solid fa-plus"></i> <p>Advertise</p> </NavLink>
+                    <NavLink className='flex items-center gap-3 px-2 hover:text-red-600 font-semibold' to='add'><i class="fa-solid fa-plus font-semibold"></i> <p>Advertise</p> </NavLink>
                    
                    
                    

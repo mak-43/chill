@@ -1,10 +1,27 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddModal = ({ setAdd }) => {
     console.log('okkkkkkk')
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {console.log(data);
+
+        fetch(`http://localhost:5000/add`, {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log('success', data)
+                            
+
+                            toast.success('Video Added')
+                        })
         setAdd(null)
     }
 
@@ -43,7 +60,7 @@ const AddModal = ({ setAdd }) => {
                         <div class="modal-action">
                          
                             <input type="submit" value='ADD' className='btn btn-primary text-white' />
-                            <label for="addmodal" class="btn bg-red-600">cancel</label>
+                            <label for="addmodal" class="btn hover:bg-red-600">cancel</label>
                         </div>
                     </form>
                 </div>
