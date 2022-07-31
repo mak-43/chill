@@ -1,11 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { toast,ToastContainer } from 'react-toastify';
-const AddVideo = ({refetch,setAdd}) => {
+import { toast, ToastContainer } from 'react-toastify';
+const AddVideo = ({ refetch, setAdd }) => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data =>{ console.log(data)
-        
+    const onSubmit = data => {
+        console.log(data)
+
         const image = data?.img[0]
         const formData = new FormData()
         formData.append('image', image)
@@ -20,16 +21,16 @@ const AddVideo = ({refetch,setAdd}) => {
                     const img = result.data.url
                     const product = {
                         category: data.category,
-                        title:data.title,
+                        title: data.title,
                         duration: data.duration,
-                       type: data.type,
+                        type: data.type,
                         url: data.url,
-                       img: img,
-                       description: data.description,
-                       country: data.country,
+                        img: img,
+                        description: data.description,
+                        country: data.country,
 
                     }
-                    fetch(`http://localhost:5000/video`, {
+                    fetch(`https://radiant-journey-19299.herokuapp.com/video`, {
                         method: 'post',
                         headers: {
                             'content-type': 'application/json'
@@ -39,11 +40,11 @@ const AddVideo = ({refetch,setAdd}) => {
                         .then(res => res.json())
                         .then(data => {
                             console.log('success', data)
-                            
+
 
                         })
                     toast.success('Video Added')
-              
+
                     setAdd(null)
                     refetch()
                 }
@@ -64,7 +65,7 @@ const AddVideo = ({refetch,setAdd}) => {
                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-5 justify-center items-start '>
 
                         <div class="input input-bordered w-full max-w-xs  flex justify-between">
-                            <input  placeholder='Category' />
+                            <input placeholder='Category' />
                             <select className='border-none'  {...register("category")}>
                                 <option value="long">Long</option>
                                 <option value="medium">Medium</option>

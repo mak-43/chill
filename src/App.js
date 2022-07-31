@@ -9,6 +9,7 @@ import Add from "./Pages/Add";
 import PrivateRoute from "./Components/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "./Components/Footer";
 
 function App() {
 
@@ -30,9 +31,8 @@ function App() {
         </Routes>
         <ToastContainer />
       </Navbar>
+      <Footer/>
 
-
-      hello
 
     </div>
   );

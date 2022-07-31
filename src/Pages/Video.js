@@ -11,12 +11,12 @@ import Videos from './Videos';
 const Video = () => {
     const [add, setAdd] = useState(null)
     const [user, loading, error] = useAuthState(auth);
-    const [videos,setVideo]=useState([])
-    useEffect(()=>{
-        fetch(`http://localhost:5000/allvideo`)
-        .then(res=>res.json())
-        .then(data=>setVideo(data))
-    },[videos])
+    const [videos, setVideo] = useState([])
+    useEffect(() => {
+        fetch(`https://radiant-journey-19299.herokuapp.com/allvideo`)
+            .then(res => res.json())
+            .then(data => setVideo(data))
+    }, [videos])
 
     return (
         <div className='w-full h-[800px]'>
@@ -44,16 +44,16 @@ const Video = () => {
             </div>
             <div className='py-10  mx-auto text-center'>
                 videosssssssssss
-              <div className='grid md:grid-cols-4 sm:grid-cols-2  gap-5'>
-                {
-                    videos?.map(v=><Videos
-                    key={v._id}
-                    Video={v}
-                    ></Videos>)
-                }
-              </div>
+                <div className='grid md:grid-cols-4 sm:grid-cols-2  gap-5'>
+                    {
+                        videos?.map(v => <Videos
+                            key={v._id}
+                            Video={v}
+                        ></Videos>)
+                    }
+                </div>
 
-             
+
 
 
             </div>

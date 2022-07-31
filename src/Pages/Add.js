@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import AddModal from '../Components/AddModal';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Add = () => {
     const [add, setAdd] = useState(null)
     const [data, setData] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/alladd`).then(res => res.json()).then(data => setData(data))
+        fetch(`https://radiant-journey-19299.herokuapp.com/alladd`).then(res => res.json()).then(data => setData(data))
     }, [data])
 
-    const handleDelete=(id)=>{
+    const handleDelete = (id) => {
         console.log(id)
-       fetch(`http://localhost:5000/add/${id}`,{
-        method:'DELETE'
-       }).then(res=>res.json())
-       .then(data=>{
-        toast.success('Add deleted')
-       })
+        fetch(`https://radiant-journey-19299.herokuapp.com/add/${id}`, {
+            method: 'DELETE'
+        }).then(res => res.json())
+            .then(data => {
+                toast.success('Add deleted')
+            })
 
     }
     return (
@@ -38,7 +38,7 @@ const Add = () => {
                                 <p>Native AD Per Video(You may also like): {d.nativeadd}</p>
                                 <p>Native AD Per Video(For Series): {d.nativeper}</p>
                                 <div class="card-actions justify-end">
-                                    <button onClick={()=>handleDelete(`${d._id}`)} class=" hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
+                                    <button onClick={() => handleDelete(`${d._id}`)} class=" hover:text-red-600"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>

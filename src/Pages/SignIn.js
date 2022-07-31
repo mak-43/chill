@@ -70,7 +70,7 @@ const SignIn = () => {
     }
 
     return (
-        <div className='flex flex-col justify-center bg-accent items-center h-screen '>
+        <div className='flex flex-col justify-center  items-center h-screen bg-img bg-black'>
            
 
 
